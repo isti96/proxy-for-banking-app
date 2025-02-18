@@ -3,7 +3,14 @@ const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "https://banking-app-2.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+app.options("*", cors());
+
 app.use(express.json());
 
 const API_URL = "https://bankaccountdata.gocardless.com/api/v2";

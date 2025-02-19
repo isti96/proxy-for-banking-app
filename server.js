@@ -5,8 +5,8 @@ const axios = require("axios");
 const app = express();
 app.use(
   cors({
-    origin: "https://banking-app-2.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
   })
 );
 app.options("*", cors());

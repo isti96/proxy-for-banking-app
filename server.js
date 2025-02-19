@@ -17,10 +17,14 @@ const API_URL = "https://bankaccountdata.gocardless.com/api/v2";
 
 app.use("/proxy", async (req, res) => {
   try {
+    console.log(req.method);
+    console.log(`${API_URL}${req.originalUrl.replace("/proxy", "")}`);
+    console.log(req.body);
     const response = await axios({
       method: req.method,
       url: `${API_URL}${req.originalUrl.replace("/proxy", "")}`,
       headers: {
+        accept: "application/json",
         "Content-Type": "application/json",
       },
       data: req.body,

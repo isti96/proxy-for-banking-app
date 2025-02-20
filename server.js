@@ -3,12 +3,7 @@ const cors = require("cors");
 const axios = require("axios");
 
 const app = express();
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
-  })
-);
+app.use(cors());
 app.options("*", cors());
 
 app.use(express.json());
@@ -16,7 +11,7 @@ app.use(express.json());
 const token = "";
 const API_URL = "https://bankaccountdata.gocardless.com/api/v2";
 
-app.get("/gocardless/country", async (req, res) => {
+app.use("/country", async (req, res) => {
   console.log(req.body, "   ", req.query);
   try {
     const { country } = req.query;
@@ -38,7 +33,7 @@ app.get("/gocardless/country", async (req, res) => {
   }
 });
 
-app.post("/gocardless/token", async (req, res) => {
+app.use("/token", async (req, res) => {
   console.log(req.body, "   ", req.query);
   try {
     const response = await axios({

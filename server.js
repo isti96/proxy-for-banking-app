@@ -33,7 +33,7 @@ app.use("/country", async (req, res) => {
   }
 });
 
-app.use("/token", async (req, res) => {
+app.post("/token", async (req, res) => {
   console.log(req.body, "   ", req.query);
   try {
     const response = await axios({
